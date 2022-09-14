@@ -1,0 +1,22 @@
+{{!< login}}
+
+
+<div class="profile__container">
+	<div class="profile__body">
+		<div class="profile__image">
+			<img src="../assets/ellipse.png" alt="avatar">
+			</div>
+			<a href="./chat.hbs" class="profile__close">
+				<img src="../assets/close.svg" alt="X">
+			</a>
+			<h3 class="profile__name">John</h3>
+			<div class="profile__items">
+			{{#each infos}}
+				{{> 'profile-info-value/profile-info-value'}}
+			{{/each}}
+			</div>
+			<a href="./change-info.hbs" class="profile__link">Изменить данные</a>
+			<a href="./change-password.hbs" class="profile__link">Изменить пароль</a>
+			<a href="./index.hbs" class="profile__link-exit">Выйти</a>
+	</div>
+</div>

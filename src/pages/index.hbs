@@ -1,0 +1,19 @@
+---
+action: "Авторизоваться"
+---
+
+{{!< login}}
+<div class="chat__container-login">
+	<main class="main">
+		<h2 class="login__title">Вход</h2>
+		<form action="#" class="login__form">
+			{{#each inputLogin}}
+				{{> 'input/input'}}
+			{{/each}}
+			{{> 'button/button'}}
+			</form>
+			
+		<a href="./chat.hbs">chat</a>
+		<a href="./signin.hbs" class="login__link">Нет аккаунта?</a>
+	</main>
+</div>
