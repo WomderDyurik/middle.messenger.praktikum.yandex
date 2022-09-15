@@ -5,7 +5,7 @@
 
 
 # netlify
-https://beamish-crumble-e406a3.netlify.app/
+[(https://candid-cendol-622baf.netlify.app/)](https://candid-cendol-622baf.netlify.app/)
 
 # figma
 "Буду еще дорабатывать и переделывать дизайн, пока очень угловато 8("
