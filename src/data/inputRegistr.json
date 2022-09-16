@@ -1,0 +1,7 @@
+[{"name": "email", "placeholder": "Почта"},
+{"name": "login", "placeholder": "Логин"},
+{"name": "name", "placeholder": "Имя"},
+{"name": "lastname", "placeholder": "Фамилия"},
+{"name": "tel", "placeholder": "Телефон"},
+{"name": "password", "placeholder": "Пароль"},
+{"name": "password", "placeholder": "Пароль еще раз"}]

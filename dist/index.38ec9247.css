@@ -189,31 +189,6 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
-body {
-  height: 100%;
-  background: #999;
-  flex-direction: column;
-  display: flex;
-}
-
-.chat__container-login {
-  width: 100%;
-  height: 100%;
-  background: #999;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.main {
-  min-width: 340px;
-  min-height: 460px;
-  background: #1e1e1e;
-  border-radius: 12px;
-  padding: 50px 30px 30px;
-  box-shadow: 0 0 6px #00000024;
-}
-
 .login__title {
   text-align: center;
   color: #fff;
@@ -268,6 +243,15 @@ body {
 .chat__container {
   width: 100%;
   height: 100%;
+  display: flex;
+}
+
+.chat__container-login {
+  width: 100%;
+  height: 100%;
+  background: #999;
+  justify-content: center;
+  align-items: center;
   display: flex;
 }
 
@@ -338,6 +322,11 @@ body {
   margin-right: 15px;
 }
 
+.option__block-item-img img {
+  width: 22px;
+  height: 22px;
+}
+
 .option__block-item-text {
   color: #fff;
   font-size: 12px;
@@ -357,9 +346,12 @@ body {
 }
 
 .chat__block-header-img {
+  margin-left: 23px;
+}
+
+.chat__block-header-img img {
   width: 34px;
   height: 34px;
-  margin-left: 23px;
 }
 
 .chat__block-header-name {
@@ -460,8 +452,6 @@ body {
 
 .chat__block-send {
   cursor: pointer;
-  width: 28px;
-  height: 28px;
   transition: all .3s;
   position: relative;
   left: 20px;
@@ -469,6 +459,11 @@ body {
 
 .chat__block-send:hover {
   opacity: .5;
+}
+
+.chat__block-send img {
+  width: 28px;
+  height: 28px;
 }
 
 .profile__container {
@@ -505,6 +500,11 @@ body {
   right: 45px;
 }
 
+.profile__close img {
+  width: 28px;
+  height: 28px;
+}
+
 .profile__close:hover {
   opacity: .8;
 }
@@ -519,6 +519,11 @@ body {
 
 .profile__back:hover {
   opacity: .8;
+}
+
+.profile__back img {
+  width: 28px;
+  height: 28px;
 }
 
 .profile__name {
@@ -563,6 +568,22 @@ body {
 
 .profile__link-exit:hover {
   opacity: .8;
+}
+
+body {
+  height: 100%;
+  background: #999;
+  flex-direction: column;
+  display: flex;
+}
+
+.main {
+  min-width: 340px;
+  min-height: 460px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 50px 30px 30px;
+  box-shadow: 0 0 6px #00000024;
 }
 
 /*# sourceMappingURL=index.38ec9247.css.map */
