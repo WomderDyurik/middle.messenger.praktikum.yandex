@@ -4,13 +4,14 @@
   "description": "",
   "engine":"16.15.0",
   "scripts": {
+    "build":"parcel build src/pages/index.hbs",
     "dev": "parcel src/pages/index.hbs --no-cache",
     "start": "parcel build src/pages/index.hbs && node ./server.js --no-cache",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache2",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "@parcel/transformer-sass": "^2.7.0",
