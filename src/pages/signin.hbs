@@ -1,0 +1,18 @@
+---
+action: "Зарегистрироваться"
+---
+
+
+{{!< body}}
+<div class="chat__container-login">
+	<main class="main">
+		<h2 class="login__title">Вход</h2>
+		<form action="#" class="login__form">
+			{{#each inputRegistr}}
+				{{> 'input/input'}}
+			{{/each}}
+			{{> 'button/button'}}
+			</form>
+			<a href="./index.hbs" class="login__link">Войти</a>
+	</main>
+</div>

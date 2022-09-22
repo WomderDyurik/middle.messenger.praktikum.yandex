@@ -1,0 +1,29 @@
+---
+action: "Сохранить"
+---
+
+
+{{!< body}}
+
+
+<div class="profile__container">
+	<div class="profile__body">
+		<div class="profile__image">
+			<img src="../assets/ellipse.png" alt="avatar">
+			</div>
+			<a href="./profile.hbs" class="profile__back">
+				<img src="../assets/back.svg" alt="X">
+			</a>
+			<a href="./chat.hbs" class="profile__close">
+				<img src="../assets/close.svg" alt="X">
+			</a>
+			<h3 class="profile__name">Изменить информацию</h3>
+			<form action="#" class="profile__items">
+			{{#each infos}}
+				{{> 'change-info-input/change-info-input'}}
+			{{/each}}
+			{{> 'button/button'}}
+			</form>
+			
+	</div>
+</div>

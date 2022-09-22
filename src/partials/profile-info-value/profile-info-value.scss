@@ -1,0 +1,20 @@
+.profile {
+
+	&__info {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 10px 0;
+		border-bottom: 1px solid #8774E1;
+		font-size: 13px;
+		line-height: 13px;
+	}
+
+	&__info-key {
+		color: #FFFFFF;
+	}
+
+	&__info-value {
+		color: #999999;
+	}
+}
