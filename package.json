@@ -6,7 +6,7 @@
   "scripts": {
     "build": "parcel build src/**/*.html",
     "dev": "parcel src/pages/index.hbs --no-cache",
-    "start": "parcel src/**/*.html && node ./server.js --no-cache -- port 3000",
+    "start": "parcel src/**/*.html && node ./server.js --no-cache --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "alias": {
