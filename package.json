@@ -5,7 +5,7 @@
   "engine": "16.15.0",
   "scripts": {
     "build": "parcel build src/**/*.html",
-    "dev": "parcel src/pages/index.hbs --no-cache",
+    "dev": "parcel src/**/*.html --no-cache",
     "start": "parcel src/**/*.html --no-cache --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
