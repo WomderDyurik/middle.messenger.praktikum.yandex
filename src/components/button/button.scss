@@ -1,0 +1,17 @@
+.login__button{
+	margin-top: 25px;
+	background: #8774E1;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 13px;
+	line-height: 13px;
+	color: #FFFFFF;
+	height: 37px;
+	transition: .3s ease;
+  	width: 100%;
+	&:hover{
+		opacity: 0.7;
+	}
+}

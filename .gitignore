@@ -1,12 +1,4 @@
 node_modules
-.github
 .parcel-cache
-src
-.gitignore
-.editorconfig
-.parcelrc
-handlebars.config.js
-package-lock.json
-package.json
-server.js
-.md
+.github
+dist

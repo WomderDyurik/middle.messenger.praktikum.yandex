@@ -1,6 +1,0 @@
-[{"key":"Почта","value":"pochta@yandex.ru","name":"email","type":"email"},
-{"key":"Логин","value":"ivanivanov","name":"login","type":"text"},
-{"key":"Имя","value":"Иван","name":"name","type":"text"},
-{"key":"Фамилия","value":"Иванов","name":"lastname","type":"text"},
-{"key":"Имя в чате","value":"Иван","name":"nickname","type":"text"},
-{"key":"Телефон","value":"+7 (909) 967 30 30","name":"tel","type":"tel"}]
