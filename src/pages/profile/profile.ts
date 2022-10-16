@@ -24,7 +24,7 @@ export class Profile extends Block {
 		
 			<div class="profile__body">
 				<div class="profile__image">
-					<img src="${ellipse}" alt="avatar">
+					<img src="${ellipse}" alt="avatar"><input class="profile__input-change" type="file"/></img>
 					</div>
 					<a href="/pages/chat" class="profile__close">
 						<img src="${close}" alt="X">

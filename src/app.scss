@@ -1,8 +1,9 @@
 @import './styles/nullstyle.scss';
-
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
 
 
 body{
+	font-family: "Roboto";
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -61,6 +62,10 @@ label{
 		line-height: 11px;
 		color: #8774E1;
 		text-align: center;
+		transition: .3s ease;
+		&:hover{
+			text-decoration: underline;
+		}
 	}
 }
 
@@ -125,15 +130,30 @@ label{
 		position: absolute;
 		width: 210px;
 		height: 90px;
-		top: 50px;
-		right: -10px;
+		top: 60px;
+		right: 30px;
 		background: #1E1E1E;
 		box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
 		border-radius: 12px;
 		padding: 10px;
-		
+		opacity: 0;
+		transition: 0.5s ease;
+		pointer-events: none;
+		transform: translateY(-10px);
+		&.open{
+			opacity: 1;
+			flex-direction: column;
+			pointer-events: auto;
+			transform: translateY(10px);
+		}
 	}
-
+	&__image {
+		cursor: pointer;
+		position: absolute;
+		top: 15px;
+		right: 30px;
+		padding: 5px;
+	}
 	&__block-item {
 		cursor: pointer;
 		display: flex;
@@ -195,11 +215,7 @@ label{
 	}
 
 	&__block-header-option {
-		cursor: pointer;
-		position: absolute;
-		top: 15px;
-		right: 30px;
-		padding: 5px;
+		
 	}
 
 	&__block-container {
@@ -314,13 +330,31 @@ label{
 	}
 
 	&__image {
+		position: relative;
 		align-self: center;
 		img{
 			width: 100px;
 			height: 100px;
 		}
+		transition: .3s ease;
+		&:hover{
+			opacity: 0.6;
+		}
 	}
-
+	&__input-change{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		opacity: 0;
+		cursor: pointer;
+		transition: .3s ease;
+		&:hover{
+			background: #999999;
+		}
+	}
 	&__close {
 		position: absolute;
 		top: 60px;

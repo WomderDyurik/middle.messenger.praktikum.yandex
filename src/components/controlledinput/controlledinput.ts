@@ -5,7 +5,6 @@ import './controlledinput.scss';
 
 interface ControlledInputProps {
   onInput?: () => void;
-  onFocus?: () => void;
   type?: 'text' | 'password' | 'email';
   placeholder?: string;
   value?: string;
@@ -22,14 +21,17 @@ export class ControlledInput extends Block {
       onBlur: (e: FocusEvent) => {
         const inputEl = e.target as HTMLInputElement
         console.log(inputEl.value)
-
-        
         if(inputEl.name === 'login') {
           const error = validateForm([
             {type: ValidateType.Login, value: inputEl.value }
           ])
           this.refs.errorRef.setProps({text: error})
         } else if (inputEl.name === 'password'){
+          const error = validateForm([
+            {type: ValidateType.Password, value: inputEl.value }
+          ])
+        this.refs.errorRef.setProps({text: error})
+        } else if (inputEl.name === 'password2'){
           const error = validateForm([
             {type: ValidateType.Password, value: inputEl.value }
           ])
@@ -55,10 +57,12 @@ export class ControlledInput extends Block {
           ])
         this.refs.errorRef.setProps({text: error})
         }
-        //this.refs.errorRef.setProps({text: error})
-
-      }
-  });
+      },
+      onFocus: (e:FocusEvent) => {
+        const inputFocusEl = e.target as HTMLInputElement
+        inputFocusEl.placeholder = ''
+      
+  }});
   }
 
   protected render(): string {

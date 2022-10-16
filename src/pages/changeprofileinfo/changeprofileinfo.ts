@@ -118,7 +118,7 @@ export class ChangeProfileInfo extends Block {
 					<h3 class="profile__name">Изменить информацию</h3>
 					<form action="#" class="profile__items">
 					{{{ControlledInput
-						label="Електронная почта"
+						label="Электронная почта:"
 						onInput=onInput
 						onFocus=onFocus
 						classname="input__input"

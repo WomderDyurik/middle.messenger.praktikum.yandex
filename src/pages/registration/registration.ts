@@ -24,6 +24,11 @@ export class Registration extends Block {
                 {type: ValidateType.Password, value: inputEl.value }
               ])
             this.refs.PasswordInputRef.refs.errorRef.setProps({text: errorMessage})
+			} else if (inputEl.name === 'password2'){
+				const errorMessage = validateForm([
+				  {type: ValidateType.Password, value: inputEl.value }
+				])
+			  this.refs.PasswordInputRef2.refs.errorRef.setProps({text: errorMessage})
             } else if (inputEl.name === 'email'){
 				const errorMessage = validateForm([
 				  {type: ValidateType.Email, value: inputEl.value }
@@ -49,6 +54,7 @@ export class Registration extends Block {
           },
           onSubmit: () => {
             const passwordEl = this.element?.querySelector('input[name="password"]') as HTMLInputElement;
+			const passwordEl2 = this.element?.querySelector('input[name="password2"]') as HTMLInputElement;
             const loginEl = this.element?.querySelector('input[name="login"]') as HTMLInputElement;
 			const emailEl = this.element?.querySelector('input[name="email"]') as HTMLInputElement;
 			const nameEl = this.element?.querySelector('input[name="name"]') as HTMLInputElement;
@@ -56,6 +62,7 @@ export class Registration extends Block {
 			const telEl = this.element?.querySelector('input[name="tel"]') as HTMLInputElement;
             const errorMessage = validateForm([
               {type: ValidateType.Password, value: passwordEl.value },
+			  {type: ValidateType.Password, value: passwordEl2.value },
               {type: ValidateType.Login, value: loginEl.value },
 			  {type: ValidateType.Email, value: emailEl.value },
 			  {type: ValidateType.Name, value: nameEl.value },
@@ -74,6 +81,7 @@ export class Registration extends Block {
               this.setProps({
                 error: errorMessage,
                 passwordValue: passwordEl.value,
+				passwordValue2: passwordEl2.value,
                 loginValue: loginEl.value,
 				emailValue: emailEl.value,
 				name: nameEl.value,
@@ -84,13 +92,19 @@ export class Registration extends Block {
               this.setProps({
                 error: '',
                 passwordValue: passwordEl.value,
+				passwordValue2: passwordEl2.value,
                 loginValue: loginEl.value,
 				emailValue: emailEl.value,
 				name: nameEl.value,
 				lastName: lastNameEl.value,
 				tel: telEl.value,
               })
-              console.log('ready to API',loginData)
+			  if(passwordEl.value !== passwordEl2.value){
+				alert('Пароли не совпадают!')
+			  } else {
+				console.log('ready to API',loginData)
+			  }
+              
             }
 
       
@@ -108,6 +122,7 @@ export class Registration extends Block {
 		<h2 class="login__title">Регистрация</h2>
 		<form action="#" class="login__form">
 		  {{{ControlledInput
+			label="Електронная почта:"
 			onInput=onInput
 			onFocus=onFocus
 			classname="input__input"
@@ -118,6 +133,7 @@ export class Registration extends Block {
 			}}}
 
 		  {{{ControlledInput
+			label="Логин:"
 			onInput=onInput
 			onFocus=onFocus
 			classname="input__input"
@@ -128,6 +144,7 @@ export class Registration extends Block {
 			}}}
 
 		  {{{ControlledInput
+			label="Имя:"
 			onInput=onInput
 			onFocus=onFocus
 			classname="input__input"
@@ -138,6 +155,7 @@ export class Registration extends Block {
 			}}}
 		  
 		  {{{ControlledInput
+			label="Фамилия:"
 			onInput=onInput
 			onFocus=onFocus
 			classname="input__input"
@@ -148,6 +166,7 @@ export class Registration extends Block {
 			}}}
 
 		  {{{ControlledInput
+			label="Телефон:"
 			onInput=onInput
 			onFocus=onFocus
 			classname="input__input"
@@ -158,6 +177,7 @@ export class Registration extends Block {
 			}}}
 
 		  {{{ControlledInput
+			label="Пароль:"
 			onInput=onInput
 			onFocus=onFocus
 			classname="input__input"
@@ -169,13 +189,14 @@ export class Registration extends Block {
 
 		  
 			{{{ControlledInput
+				label="Пароль (Еще раз):"
 				onInput=onInput
 				onFocus=onFocus
 				classname="input__input"
-				name="password"
+				name="password2"
 				type="password"
 				placeholder="Пароль (Еще раз)"
-				ref="PasswordInputRef"
+				ref="PasswordInputRef2"
 				}}}
 		  
 		  {{{Button

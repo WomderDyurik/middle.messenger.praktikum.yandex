@@ -10,7 +10,6 @@ import arrow from "assets/arrow.svg";
 
 type ChatProps = {
 	items: Array<{
-		active: string;
 		name: string;
 		message: string;
 		date: string;
@@ -25,7 +24,6 @@ export class Chat extends Block {
 		super({items}
 			)
 		this.setProps({
-			
 			error: '',
 			messageValue: '',
 			onInput: (e: FocusEvent) => {
@@ -56,9 +54,20 @@ export class Chat extends Block {
 				}
 			}
 		})
-	
+		const optionTarget = this.element?.querySelector('div[class="option__image"]') as HTMLElement;
+		const options = this.element?.querySelector('div[class="option__block"]') as HTMLElement;
+		optionTarget.addEventListener('click', (e: FocusEvent) => {
+			e.preventDefault()
+			options.classList.toggle('open')
+		})
+		const chatItems = this.element?.querySelectorAll('div[class="chat__item"]') as HTMLDataListElement;
+		for(let chatItem of chatItems) {
+			chatItem.addEventListener('click', () => {
+				chatItem.classList.toggle('active')
+			})
+		}
 	}
-
+	
 	
 	
 
@@ -76,7 +85,6 @@ export class Chat extends Block {
 		{{#each items}}
 		{{#with this}}
 			{{{ChatItem
-			active="{{active}}"
 			name="{{name}}"
 			message="{{message}}"
 			date="{{date}}"
@@ -93,24 +101,24 @@ export class Chat extends Block {
 					<img src="${ellipse}" alt="logo">
 				</div>
 				<div class="chat__block-header-name">Андрей</div>
-				<div id="option" class="chat__block-header-option">
-					<img src="${option}" alt="option">
-					<div class="option__block">
-					<div class="option__block-item option__block-item-add">
-						<div class="option__block-item-img">
-							<img src="${add}" alt="add">
-						</div>
-						<div class="option__block-item-text">Добавить пользователя</div>
-					</div>
-					<div class="option__block-item option__block-item-delete">
-						<div class="option__block-item-img">
-							<img src="${del}" alt="del">
-						</div>
-						<div class="option__block-item-text">Удалить пользователя</div>
-					</div>
-				</div>
-				</div>
 				
+					<div class="option__image">
+						<img src="${option}" alt="option">
+					</div>
+					<div class="option__block">
+						<div class="option__block-item option__block-item-add">
+							<div class="option__block-item-img">
+								<img src="${add}" alt="add">
+							</div>
+							<div class="option__block-item-text">Добавить пользователя</div>
+						</div>
+						<div class="option__block-item option__block-item-delete">
+							<div class="option__block-item-img">
+								<img src="${del}" alt="del">
+							</div>
+							<div class="option__block-item-text">Удалить пользователя</div>
+						</div>
+					</div>
 			</div>
 			<div class="chat__block-container">
 				<div class="chat__block-message">

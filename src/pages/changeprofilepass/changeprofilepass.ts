@@ -16,18 +16,38 @@ export class ChangeProfilePass extends Block {
 			passwordValue: '',
 			onInput: (e: FocusEvent) => {
 				const inputEl = e.target as HTMLInputElement
-				const errorMessage = validateForm([
-					{type: ValidateType.Password, value: inputEl.value }
-				])
 
-				this.refs.PasswordInputRef.refs.errorRef.setProps({text: errorMessage})
-			},
+
+				if (inputEl.name === 'passwordold'){
+					const errorMessage = validateForm([
+					  {type: ValidateType.Password, value: inputEl.value }
+					])
+				  this.refs.PasswordInputRef.refs.errorRef.setProps({text: errorMessage})
+				  } else if (inputEl.name === 'password2'){
+					  const errorMessage = validateForm([
+						{type: ValidateType.Password, value: inputEl.value }
+					  ])
+					this.refs.PasswordInputRef2.refs.errorRef.setProps({text: errorMessage})
+				  } else if (inputEl.name === 'password3'){
+					const errorMessage = validateForm([
+					  {type: ValidateType.Password, value: inputEl.value }
+					])
+				  this.refs.PasswordInputRef3.refs.errorRef.setProps({text: errorMessage})
+			}
+		},
 			onSubmit: () => {
-				const passwordEl = this.element?.querySelector('input[name="password"]') as HTMLInputElement;
+				const passwordEl = this.element?.querySelector('input[name="passwordold"]') as HTMLInputElement;
+				const passwordEl2 = this.element?.querySelector('input[name="password2"]') as HTMLInputElement;
+				const passwordEl3 = this.element?.querySelector('input[name="password3"]') as HTMLInputElement;
 				const errorMessage = validateForm([
-					{type: ValidateType.Password, value: passwordEl.value }
+					{type: ValidateType.Password, value: passwordEl.value },
+					{type: ValidateType.Password, value: passwordEl2.value },
+					{type: ValidateType.Password, value: passwordEl3.value }
 				])
-
+				const passwordData = {
+					oldPassword: passwordEl.value,
+					newPassword: passwordEl2.value
+				}
 				if(errorMessage){
 					this.setProps({
 						error: errorMessage,
@@ -38,7 +58,12 @@ export class ChangeProfilePass extends Block {
 						error: '',
 						passwordValue: passwordEl.value
 					})
-					console.log(passwordEl.value)
+					if(passwordEl2.value !== passwordEl3.value){
+						alert('Новые пароли не совпадают!')
+					} else {
+						console.log('Ready to Api',passwordData)
+					}
+					
 				}
 
 				
@@ -69,7 +94,7 @@ render() {
 					onInput=onInput
 					onFocus=onFocus
 					classname="input__input"
-					name="password"
+					name="passwordold"
 					type="password"
 					placeholder="*********"
 					ref="PasswordInputRef"
@@ -79,20 +104,20 @@ render() {
 					onInput=onInput
 					onFocus=onFocus
 					classname="input__input"
-					name="password"
+					name="password2"
 					type="password"
 					placeholder="********"
-					ref="PasswordInputRef"
+					ref="PasswordInputRef2"
 				  }}}
 				  {{{ControlledInput
 					label="Повторите новый пароль"
 					onInput=onInput
 					onFocus=onFocus
 					classname="input__input"
-					name="password"
+					name="password3"
 					type="password"
 					placeholder="********"
-					ref="PasswordInputRef"
+					ref="PasswordInputRef3"
 				  }}}
 		
 				  {{{Button

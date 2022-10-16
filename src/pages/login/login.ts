@@ -58,7 +58,6 @@ export class LoginPage extends Block {
 }
 
   render() {
-    const { errors, values } = this.state;
 
     // language=hbs
     return `

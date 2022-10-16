@@ -21,16 +21,14 @@ registerComponent(ChatItem);
 
 document.addEventListener("DOMContentLoaded", 
 () => {
-	console.log('55')
     renderDOM(new Chat({
 		items: [
-		  {active: 'active', name: 'ivan', message: 'Hello world', date: '10:20', notification: "4"},
-		  {active: '',name: 'Olga', message: 'Hello world', date: '10:20', notification: "4"},
-		  {active: '',name: 'Alex', message: 'Hello world', date: '10:20', notification: "4"},
-		  {active: '',name: 'Kolya', message: 'Hello world', date: '10:20', notification: "4"},
-		  {active: '',name: 'Zerat', message: 'Hello world', date: '10:20', notification: "4"},
-		  {active: '',name: 'ivan2', message: 'Hello world', date: '10:20', notification: "4"},
+		  {name: 'ivan', message: 'Hello world', date: '10:20', notification: "4"},
+		  {name: 'Olga', message: 'Hello world', date: '10:20', notification: "4"},
+		  {name: 'Alex', message: 'Hello world', date: '10:20', notification: "4"},
+		  {name: 'Kolya', message: 'Hello world', date: '10:20', notification: "4"},
+		  {name: 'Zerat', message: 'Hello world', date: '10:20', notification: "4"},
+		  {name: 'ivan2', message: 'Hello world', date: '10:20', notification: "4"},
 		]
 	  }));
-	  console.log('66')
 });
