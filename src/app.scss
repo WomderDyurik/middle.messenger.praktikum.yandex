@@ -7,7 +7,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	background: #999999;
+	background: var(--color-bg);
 }
 .main {
 	position: absolute;
@@ -37,6 +37,18 @@ label{
 	color: #FFFFFF;
 	font-size: 16px;
   }
+
+html.light{
+	--color-bg: #FFFFFF;
+	--color-text: #000000;
+}
+
+html.dark{
+	--color-bg: #999999;
+	--color-text: #FFFFFF;
+}
+
+
 
 //================================= Login
 
@@ -214,9 +226,6 @@ label{
 		color: #FFFFFF;
 	}
 
-	&__block-header-option {
-		
-	}
 
 	&__block-container {
 		width: 600px;
@@ -392,7 +401,7 @@ label{
 		font-size: 16px;
 		line-height: 16px;
 		text-align: center;
-		color: #FFFFFF;
+		color: var(--color-text);
 	}
 
 	&__items{

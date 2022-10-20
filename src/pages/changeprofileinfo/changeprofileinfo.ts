@@ -91,9 +91,16 @@ export class ChangeProfileInfo extends Block {
               })
               console.log('ready to API',loginData)
             }
-
-      
     }
+  })
+  		
+  const themes = this.element?.querySelector('div[class="themes"]') as HTMLElement;
+  themes.addEventListener('change', (event) => {
+	if (event.target.nodeName === 'INPUT') {
+		console.log('55')
+		document.documentElement.classList.remove('dark', 'light');
+		document.documentElement.classList.add(event.target.value);
+	}
   })
 }
 
@@ -178,6 +185,10 @@ export class ChangeProfileInfo extends Block {
 						onClick=onSubmit
 					  }}}
 					</form>
+					<div class="themes">
+					  <label><input type ="radio" name="theme" value="light" checked>Light</label>
+					  <label><input type ="radio" name="theme" value="dark">Black</label>
+					</div>
 			</div>
 	  	{{/Layout}}
 		`;
