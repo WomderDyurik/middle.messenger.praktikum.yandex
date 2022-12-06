@@ -1,4 +1,6 @@
-node_modules
-.parcel-cache
-.github
-dist
+dist/
+node_modules/
+.parcel-cache/
+.prettierrc
+.vscode/
+.cache/
