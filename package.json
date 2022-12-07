@@ -4,9 +4,9 @@
   "description": "",
   "engine": "16.15.0",
   "scripts": {
-    "build": "parcel build src/**/*.html",
+    "build": "parcel build src/index.html",
     "dev": "parcel --no-cache src/index.html",
-    "start": "node server.js",
+    "start": "parcel src/index.html --no-cache --port 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "alias": {
