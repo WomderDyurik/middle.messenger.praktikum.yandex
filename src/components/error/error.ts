@@ -1,17 +1,18 @@
-import Block from 'core/Block';
+import Block from '../../core/Block';
 
-import './input.scss';
+import './error.scss';
 
-interface ErrorProps {
-  text?: string;
+interface ErrorMessageProps {
+	text: string;
 }
 
-export class Error extends Block<ErrorProps> {
-  static componentName : 'Error';
-  protected render(): string {
-    // language=hbs
-    return `
-        <div class="error">{{#if text}}{{text}}{{/if}}</div>
-    `
-  }
+export default class ErrorMessage extends Block {
+	static componentName = 'Error';
+
+	protected render(): string {
+		// language=hbs
+		return `
+		<div class="error">{{text}}</div>
+    `;
+	}
 }

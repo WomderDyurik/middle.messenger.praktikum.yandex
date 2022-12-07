@@ -1,7 +1,71 @@
 {
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"airbnb-base",
+		"airbnb-typescript/base",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".ts"]
+			}
+		}
+	},
+	"parserOptions": {
+		"ecmaVersion": "es6",
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"ignorePatterns": ["*.scss", "*.html"],
+
+	"plugins": ["@typescript-eslint"],
 	"rules": {
-	  "no-unused-vars": 2,
-	  "max-len": [1, 100],
-	  "max-params": [2, 3]
-	  }
-  }  
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"ts": "never"
+			}
+		],
+		"no-underscore-dangle": 0,
+		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"lines-between-class-members": "off",
+		"class-methods-use-this": ["off"],
+		"no-constructor-return": 0,
+		"no-shadow": "off",
+		"@typescript-eslint/no-shadow": 0,
+		"no-param-reassign": ["error", { "props": false }],
+		"no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "args": "none" }],
+		"@typescript-eslint/no-unnecessary-type-constraint": "warn",
+		"@typescript-eslint/no-unused-vars": [
+			"warn",
+			{
+				"argsIgnorePattern": "^_",
+				"varsIgnorePattern": "^_",
+				"args": "none"
+			}
+		],
+		"prettier/prettier": [
+			"error",
+			{
+				"singleQuote": true,
+				"trailingComma": "all",
+				"useTabs": true,
+				"semi": true,
+				"bracketSpacing": true,
+				"printWidth": 100,
+				"endOfLine": "auto"
+			}
+		],
+		"import/prefer-default-export": "off"
+	}
+}

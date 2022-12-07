@@ -1,6 +1,6 @@
-import  Profile  from 'pages/profile';
-import  LoginPage  from 'pages/login';
-import { SignUpPage } from 'pages/sign-up';
+import { ProfilePage } from 'pages/profile';
+import { SignInPage } from 'pages/signin';
+import { SignUpPage } from 'pages/signup';
 import Block from './Block';
 
 export enum Screens {
@@ -12,7 +12,7 @@ export enum Screens {
 const map = {
 	[Screens.SignIn]: SignInPage,
 	[Screens.SignUp]: SignUpPage,
-	[Screens.Profile]: Profile,
+	[Screens.Profile]: ProfilePage,
 };
 
 export const getScreenComponent = (screen: Screens): typeof Block => {

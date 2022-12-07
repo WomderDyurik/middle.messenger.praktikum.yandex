@@ -8,7 +8,7 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-export class Button extends Block {
+export default class Button extends Block {
   static componentName: 'Button';
 
 
@@ -21,7 +21,6 @@ export class Button extends Block {
     return `
       <div class="button">
         <button class="{{classname}}" type="button">{{text}}
-        <div data-layout=1></div>
         </button>
       </div>
     `;

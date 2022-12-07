@@ -1,4 +1,4 @@
-import { isEqualTo } from 'utils/isEqual';
+import { isEqualTo } from '../utils/isEqual';
 import Block from './Block';
 import renderDOM from './renderDOM';
 

@@ -1,0 +1,1 @@
+export { getUserInfoRows } from './getUserInfoRows'

@@ -5,14 +5,13 @@
   "engine": "16.15.0",
   "scripts": {
     "build": "parcel build src/**/*.html",
-    "dev": "parcel src/**/*.html --no-cache",
-    "start": "parcel src/**/*.html --no-cache --port 3000",
+    "dev": "parcel --no-cache src/index.html",
+    "start": "parcel --no-cache src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "alias": {
     "core": "./src/core",
     "components": "./src/components",
-    "assets": "./src/assets",
     "pages": "./src/pages",
     "helpers": "./src/helpers"
   },
