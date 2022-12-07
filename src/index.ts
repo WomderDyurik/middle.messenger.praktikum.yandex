@@ -1,23 +1,69 @@
-require("babel-core/register");
+import { Button }  from 'components/button';
+import { ChatButton } from 'components/chat/chatbutton';
+import { ChatMessage } from 'components/chat/chatmessage';
+import { ControlledInput } from 'components/controlledinput';
+import { ErrorMessage  } from 'components/error';
+import Input from 'components/input/input';
+import { Layout } from 'components/layout';
+import { LayoutChats } from 'components/layoutchats';
+import { Link } from 'components/link';
+import { registerComponent, renderDOM } from 'core';
+import { BrowserRouter } from 'core/BrowserRouter';
+import { BlockConstructable } from 'core/registerComponent';
+import { Store } from 'core/Store';
+import { getScreenComponent } from 'core/screenList';
+import { SignInPage } from 'pages/signin';
+import { SignUpPage } from 'pages/signup';
+import { EditPasswordPage, EditProfilePage, ProfilePage } from 'pages/profile';
+import { InputFile } from 'components/inputfile';
+import { UserAvatar } from 'components/useravatar';
+import { ChatPage } from 'pages/chats';
+import { NotFoundPage, ServerErrorPage } from 'pages/errors';
+import { defaultState } from './store/index';
 
-import {registerComponent }  from './core';
-import './app.scss';
+const components: BlockConstructable[] = [
+	Input,
+	Button,
+	Layout,
+	Link,
+	ChatButton,
+	ChatMessage,
+	LayoutChats,
+	ControlledInput,
+	ErrorMessage,
+	InputFile,
+	UserAvatar,
+];
+components.forEach((component) => {
+	registerComponent(component);
+});
+declare global {
+	interface Window {
+		router: BrowserRouter;
+		store: Store<AppState>;
+	}
+}
+const router = new BrowserRouter();
+const store = new Store<AppState>(defaultState);
 
-import Button from './components/button';
-import Input from './components/input';
-import Input2 from './components/input2';
-import ErrorComponent from './components/error';
-import ControlledInput from './components/controlledinput';
-import Layout from './components/layout';
-import ChatItem from './components/chatitem';
-import ProfileItem from './components/profileitem';
+window.router = router;
+window.store = store;
 
-registerComponent(Button);
-registerComponent(Input);
-registerComponent(Layout);
-registerComponent(ChatItem);
-registerComponent(ProfileItem);
-registerComponent(Input2);
-registerComponent(ErrorComponent);
-registerComponent(ControlledInput);
+store.on('changed', (prevState, nextState) => {
+	if (prevState.screen !== nextState.screen) {
+		const Page = getScreenComponent(nextState.screen);
+		renderDOM(new Page());
+	}
+});
 
+router
+	.use('/', SignInPage, {})
+	.use('/sign-in', SignInPage, {})
+	.use('/sign-up', SignUpPage, {})
+	.use('/chats', ChatPage, {})
+	.use('/profile', ProfilePage, {})
+	.use('/update-user-info', EditProfilePage, {})
+	.use('/update-user-password', EditPasswordPage, {})
+	.use('/server-error', ServerErrorPage, {})
+	.use('*', NotFoundPage, {})
+	.start();

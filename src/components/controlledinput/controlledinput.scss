@@ -1,16 +1,16 @@
 
 input::placeholder{
-	color: #FFFFFF;
+	color: var(--color-text);
 }
 
 .input__lable{
-  font-size: 16px;
-  color: #FFFFFF;
+  font-size: 12px;
+  color: black;
 }
 
 .input__title{
 	font-size: 14px;
-	color: #FFFFFF;
+	color: var(--color-text);
 }
 
 .input__error {

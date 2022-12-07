@@ -1,86 +1,61 @@
-import Block from 'core/Block';
-import { validateForm, ValidateType } from 'helpers/validateForm';
+import { InputProps } from 'components/input/input';
+import { ValidationRule, validationValue } from 'helpers/validation';
+import Block from '../../core/Block';
 
 import './controlledinput.scss';
 
-interface ControlledInputProps {
-  onInput?: () => void;
-  onFocus?: () => void;
-  type?: 'text' | 'password' | 'email';
-  placeholder?: string;
-  value?: string;
-  error?: string;
-  classname?: string;
-  name?: string;
-  label?: string;
+interface ControlledInputProps extends InputProps {
+	label: string;
+	validationRule?: ValidationRule;
+	styledControl?: string;
 }
 
-export class ControlledInput extends Block {
-  static componentName: 'ControlledInput';
-  constructor(props: ControlledInputProps) {
-    super({...props,
-      onBlur: (e: FocusEvent) => {
-        const inputEl = e.target as HTMLInputElement
-        console.log(inputEl.value)
+export default class ControlledInput extends Block {
+	static componentName = 'ControlledInput';
 
-        
-        if(inputEl.name === 'login') {
-          const error = validateForm([
-            {type: ValidateType.Login, value: inputEl.value }
-          ])
-          this.refs.errorRef.setProps({text: error})
-        } else if (inputEl.name === 'password'){
-          const error = validateForm([
-            {type: ValidateType.Password, value: inputEl.value }
-          ])
-        this.refs.errorRef.setProps({text: error})
-        } else if (inputEl.name === 'email'){
-          const error = validateForm([
-            {type: ValidateType.Email, value: inputEl.value }
-          ])
-        this.refs.errorRef.setProps({text: error})
-        } else if (inputEl.name === 'name' || inputEl.name === 'lastname'){
-          const error = validateForm([
-            {type: ValidateType.Name, value: inputEl.value }
-          ])
-        this.refs.errorRef.setProps({text: error})
-        } else if (inputEl.name === 'tel'){
-          const error = validateForm([
-            {type: ValidateType.Tel, value: inputEl.value }
-          ])
-        this.refs.errorRef.setProps({text: error})
-        } else if (inputEl.name === 'message'){
-          const error = validateForm([
-            {type: ValidateType.Message, value: inputEl.value }
-          ])
-        this.refs.errorRef.setProps({text: error})
-        }
-        //this.refs.errorRef.setProps({text: error})
+	constructor({ label, styledControl, validationRule, ...props }: ControlledInputProps) {
+		super({
+			label,
+			styledControl,
+			...props,
+			onFocus: (e: Event) => {
+				const input = e.target as HTMLInputElement;
+				const { value } = input;
+				this.refs.error.setProps({ text: '' });
+			},
+			onBlur: (e: FocusEvent) => {
+				const input = e.target as HTMLInputElement;
+				const { value } = input;
+				if (validationRule) {
+					const errorText = validationValue(validationRule, value);
+					this.refs.error.setProps({ text: errorText });
+				}
+			},
+		});
+	}
 
-      }
-  });
-  }
-
-  protected render(): string {
-    // language=hbs
-    return `
-      <div class="input">
-      <div class="input__lable">{{label}}</div>
-      {{{Input2
-        ref="input"
-        name="{{name}}"
-        type="{{type}}"
-        classname="{{classname}}"
-        placeholder="{{placeholder}}"
-        onInput=onInput
-				onFocus=onFocus
-				onBlur=onBlur
-      }}}
-      {{{Error 
-        ref="errorRef"
-        text=error
-      }}}
-      </div>
-    `
-  }
+	protected render(): string {
+		// language=hbs
+		return `
+		<div class="input">
+		{{#if label}}
+		<div class="input__label">
+		{{label}}
+        </div>
+		{{/if}}
+		{{{
+		Input ref="input" 
+		name=name 
+		type=type
+		className=className
+		placeholder=placeholder 
+		onFocus=onFocus 
+		onBlur=onBlur 
+		onChange=onChange 
+		value=value
+		}}}
+		{{{Error ref="error"}}}
+		</div>
+    `;
+	}
 }

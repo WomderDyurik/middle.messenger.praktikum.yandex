@@ -1,1 +1,1 @@
-export { HTTPTransport } from './HTTPTransport';
+export { getUserInfoRows } from './getUserInfoRows'
